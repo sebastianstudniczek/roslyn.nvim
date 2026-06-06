@@ -40,6 +40,8 @@ vim.api.nvim_create_autocmd({ "BufReadCmd" }, {
         vim.bo[args.buf].modifiable = true
         vim.bo[args.buf].swapfile = false
 
+        vim.notify("Triggering buf read cmd")
+
         -- This triggers FileType event which should fire up the lsp client if not already running
         vim.bo[args.buf].filetype = "cs"
         local client = vim.lsp.get_clients({ name = "roslyn", bufnr = args.buf })[1]
